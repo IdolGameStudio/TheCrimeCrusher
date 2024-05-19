@@ -8,6 +8,7 @@ using _Project.Services.RandomizerService;
 using _Project.Services.SaveLoadService;
 using _Project.Services.StaticDataService;
 using _Project.UI.Factories;
+using GamePush;
 using UnityEngine;
 using Zenject;
 
@@ -54,8 +55,13 @@ namespace _Project.CompositionRoot
                 .FromComponentInNewPrefabResource(InfrastructureAssetPath.GameBootstraper);
         }
 
-        private void BindInputService() => 
-            Container.BindInterfacesAndSelfTo<InputService>().AsSingle();
+        private void BindInputService()
+        {
+            if (GP_Device.IsMobile())
+                Container.BindInterfacesAndSelfTo<MobileInputService>().AsSingle();
+            else
+                Container.BindInterfacesAndSelfTo<InputService>().AsSingle();
+        }
 
         private void BindAdsService() => 
             Container.BindInterfacesAndSelfTo<AdsService>().AsSingle();

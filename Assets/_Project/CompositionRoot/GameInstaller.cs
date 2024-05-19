@@ -31,7 +31,7 @@ namespace _Project.CompositionRoot
             BindStaticDataService();
 
             BindGameFactory();
-        
+
             BindUIFactory();
 
             BindRandomizeService();
@@ -45,7 +45,7 @@ namespace _Project.CompositionRoot
             BindInputService();
         }
 
-        private void BindStaticDataService() => 
+        private void BindStaticDataService() =>
             Container.BindInterfacesAndSelfTo<StaticDataService>().AsSingle();
 
         private void BindGameBootstraperFactory()
@@ -63,7 +63,7 @@ namespace _Project.CompositionRoot
                 Container.BindInterfacesAndSelfTo<InputService>().AsSingle();
         }
 
-        private void BindAdsService() => 
+        private void BindAdsService() =>
             Container.BindInterfacesAndSelfTo<AdsService>().AsSingle();
 
         private void BindSaveLoadService()
@@ -80,7 +80,7 @@ namespace _Project.CompositionRoot
                 .AsSingle();
         }
 
-        private void BindRandomizeService() => 
+        private void BindRandomizeService() =>
             Container.BindInterfacesAndSelfTo<RandomizerService>().AsSingle();
 
         private void BindGameFactory()
@@ -110,11 +110,12 @@ namespace _Project.CompositionRoot
                 .AsSingle();
         }
 
-        private void BindSceneLoader() => 
+        private void BindSceneLoader() =>
             Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
 
-        private void BindLoadingCurtain() => 
-            Container.Bind<ILoadingCurtain>().To<LoadingCurtain>().FromComponentInNewPrefabResource(InfrastructureAssetPath.CurtainPath).AsSingle();
+        private void BindLoadingCurtain() =>
+            Container.Bind<ILoadingCurtain>().To<LoadingCurtain>()
+                .FromComponentInNewPrefabResource(InfrastructureAssetPath.CurtainPath).AsSingle();
 
         private void BindGameStateMachine()
         {

@@ -6,15 +6,18 @@ namespace _Project.Services.InputService
     {
         private const string Horizontal = "Horizontal";
         private const string Vertical = "Vertical";
-        private Vector3 inputDirection;
+        private Vector3 _inputDirection;
 
         public Vector3 GetInputDirection()
         {
-            inputDirection.x = SimpleInput.GetAxis(Horizontal);
-            inputDirection.z = SimpleInput.GetAxis(Vertical);
-            inputDirection.y = 0f;
-
-            return inputDirection.normalized;
+            _inputDirection.x = SimpleInput.GetAxis(Horizontal);
+            _inputDirection.z = SimpleInput.GetAxis(Vertical);
+            _inputDirection.y = 0f;
+Debug.Log(IsMoving());
+            return _inputDirection.normalized;
         }
+
+        public bool IsMoving() => Input.GetAxis(Horizontal) != 0 || Input.GetAxis(Vertical) != 0;
+        
     }
 }

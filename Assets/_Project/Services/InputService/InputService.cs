@@ -6,15 +6,17 @@ namespace _Project.Services.InputService
     {
         private const string Horizontal = "Horizontal";
         private const string Vertical = "Vertical";
-        private Vector3 inputDirection;
+        private Vector3 _inputDirection;
 
         public Vector3 GetInputDirection()
         {
-            inputDirection.x = Input.GetAxis(Horizontal);
-            inputDirection.z = Input.GetAxis(Vertical);
-            inputDirection.y = 0f;
+            _inputDirection.x = Input.GetAxis(Horizontal);
+            _inputDirection.z = Input.GetAxis(Vertical);
+            _inputDirection.y = 0f;
 
-            return inputDirection.normalized;
+            return _inputDirection.normalized;
         }
+        
+        public bool IsMoving() => _inputDirection.sqrMagnitude > 0.01f;
     }
 }

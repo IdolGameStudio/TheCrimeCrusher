@@ -1,3 +1,4 @@
+using _Project.StaticData.Player;
 using UnityEngine;
 
 namespace _Project.GamePlay.Player
@@ -9,5 +10,11 @@ namespace _Project.GamePlay.Player
 
         public float Speed => _speed;
         public float RotationSpeed => _rotationSpeed;
+
+        public void Initialize(PlayerStaticData playerData)
+        {
+            _speed = playerData.MoveSpeed;
+            _rotationSpeed = playerData.RotateSpeed;
+        }
     }
 }

@@ -9,9 +9,9 @@ namespace _Project.Services.StaticDataService
     public class StaticDataService : IStaticDataService
     {
         private const string PlayerPath = "StaticData/Player/PlayerStaticData";
-        private const string LevelsPath = "StaticData/Levels/Level";
+        private const string LevelsPath = "StaticData/Levels";
 
-        private Dictionary<int, LevelData> _levels;
+        private Dictionary<int, LevelStaticData> _levels;
         private PlayerStaticData _playerStaticData;
 
         public PlayerStaticData PlayerData => _playerStaticData;
@@ -23,12 +23,11 @@ namespace _Project.Services.StaticDataService
 
             _playerStaticData = Resources.Load<PlayerStaticData>(PlayerPath);
 
-            _levels = Resources.Load<LevelStaticData>(LevelsPath).LevelsData
-                .ToDictionary(x => x.LevelIndex, x => x);
+            _levels = Resources.LoadAll<LevelStaticData>(LevelsPath).ToDictionary(x => x.LevelIndex, x => x);
         }
 
-        public LevelData GetLevelStaticData(int levelIndex) =>
-            _levels.TryGetValue(levelIndex, out LevelData levelData)
+        public LevelStaticData GetLevelStaticData(int levelIndex) =>
+            _levels.TryGetValue(levelIndex, out LevelStaticData levelData)
                 ? levelData
                 : null;
     }

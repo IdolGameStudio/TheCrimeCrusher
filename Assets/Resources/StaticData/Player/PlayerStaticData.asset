@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48a1a21163b4e83895e27c7df955cf7, type: 3}
   m_Name: PlayerStaticData
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
+  WalkSpeed: 1
   RotateSpeed: 5
-  Prefab: {fileID: 1759407585446221233, guid: 5ac6cb7bd5d693c4b89deca917e7112a, type: 3}
+  Prefab: {fileID: 1447477219941586, guid: 5959dc966815f094fb4864dec4f31631, type: 3}

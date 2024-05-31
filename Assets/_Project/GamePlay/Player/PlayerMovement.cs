@@ -9,7 +9,7 @@ namespace _Project.GamePlay.Player
     {
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private PlayerData _playerData;
-        
+
         private IInputService _inputService;
 
         [Inject]
@@ -17,11 +17,12 @@ namespace _Project.GamePlay.Player
         {
             _inputService = inputService;
         }
+
         private void Update()
         {
             Vector3 moveDirection = _inputService.GetInputDirection();
-
-            _characterController.Move(moveDirection * (_playerData.Speed * Time.deltaTime));
+            if (_inputService.IsMoving())
+                _characterController.Move(moveDirection * (_playerData.WalkSpeed * Time.deltaTime));
         }
     }
 }

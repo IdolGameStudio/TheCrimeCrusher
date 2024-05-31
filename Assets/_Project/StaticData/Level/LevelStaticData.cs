@@ -6,6 +6,9 @@ namespace _Project.StaticData.Level
     [CreateAssetMenu(fileName = "Level", menuName = "StaticData/Level")]
     public class LevelStaticData: ScriptableObject
     {
-        public List<LevelData> LevelsData;
+        public int LevelIndex;
+        public GameObject Prefab;
+        public Vector3 PlayerPosition;
+        public List<EnemiesData> Enemies;
     }
 }

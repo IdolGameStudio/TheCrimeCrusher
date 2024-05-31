@@ -10,11 +10,12 @@ namespace _Project.GamePlay.CharacterSM
     {
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private PlayerData _playerData;
-        
+        [SerializeField] private Animator _playerAnimator;
+
         private CharacterStateMachine _stateMachine = new CharacterStateMachine();
         private IInputService _inputService;
         private PlayerIdle _playerIdle;
-        private PlayerMoving _playerMoving;
+        private PlayerWalkState _playerWalkState;
 
         [Inject]
         private void Construct(IInputService inputService)
@@ -24,23 +25,23 @@ namespace _Project.GamePlay.CharacterSM
 
         private void Start()
         {
-            _playerIdle = new PlayerIdle();
-            _playerMoving = new PlayerMoving(_characterController,_inputService, _playerData);
+            _playerIdle = new PlayerIdle(_playerAnimator);
+            _playerWalkState = new PlayerWalkState(_characterController, _inputService, _playerData, _playerAnimator);
             _stateMachine.ChangeState(_playerIdle);
         }
 
         private void Update()
         {
-            
-            _stateMachine.Update();
             if (_inputService.IsMoving())
             {
-                _stateMachine.ChangeState(_playerMoving);
+                _stateMachine.ChangeState(_playerWalkState);
             }
             else
             {
                 _stateMachine.ChangeState(_playerIdle);
             }
+
+            _stateMachine.Update();
         }
     }
 }

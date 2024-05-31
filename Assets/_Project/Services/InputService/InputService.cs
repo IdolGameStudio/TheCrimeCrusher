@@ -10,6 +10,7 @@ namespace _Project.Services.InputService
 
         public Vector3 GetInputDirection()
         {
+            _inputDirection = Vector3.zero;
             _inputDirection.x = Input.GetAxis(Horizontal);
             _inputDirection.z = Input.GetAxis(Vertical);
             _inputDirection.y = 0f;

@@ -35,6 +35,9 @@ namespace _Project.Infrastructure.Factories
         {
             _player = _diContainer.InstantiatePrefab(_staticDataService.PlayerData.Prefab);
             _player.GetComponent<PlayerData>().Initialize(_staticDataService.PlayerData);
+            _player.SetActive(false);
+            _player.transform.position = _staticDataService.GetLevelStaticData(_currentLevel).PlayerPosition;
+            _player.SetActive(true);
         }
 
         public void CreateLevel(int level)

@@ -7,5 +7,7 @@
         public const string StartGameScene = "GameHub";
         public const string HUDRoot = "Infrastructure/HUD Root";
         public const string GameBootstraper = "Infrastructure/Game Bootstraper";
+        public const string Interface = "Infrastructure/Interface";
+        
     }
 }

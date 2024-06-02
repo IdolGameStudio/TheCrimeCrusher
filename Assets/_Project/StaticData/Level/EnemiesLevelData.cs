@@ -1,15 +1,16 @@
 using System;
+using _Project.StaticData.Enemy;
 using UnityEngine;
 
 namespace _Project.StaticData.Level
 {
     [Serializable]
-    public class EnemiesData
+    public class EnemiesLevelData
     {
         public EnemyType EnemyType;
         public Vector3 EnemyPosition;
 
-        public EnemiesData(EnemyType enemyType, Vector3 enemyPosition)
+        public EnemiesLevelData(EnemyType enemyType, Vector3 enemyPosition)
         {
             EnemyType = enemyType;
             EnemyPosition = enemyPosition;

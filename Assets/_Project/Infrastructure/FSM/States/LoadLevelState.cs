@@ -1,4 +1,5 @@
-﻿using _Project.Infrastructure.Factories;
+﻿using _Project.GamePlay.Camera;
+using _Project.Infrastructure.Factories;
 using UnityEngine;
 using Zenject;
 
@@ -38,6 +39,8 @@ namespace _Project.Infrastructure.FSM.States
             int startLevelIndex = 0;
             _gameFactory.CreateLevel(startLevelIndex);
             _gameFactory.CreatePlayer();
+            Camera.main.GetComponent<VirtualCameraControl>().VirtualCamera.Follow = _gameFactory.Player.transform;
+            _gameFactory.CreateEnemyInLevel(startLevelIndex);
             _gameStateMachine.Enter<GameLoopState>();
         }
 

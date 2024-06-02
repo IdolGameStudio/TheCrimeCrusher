@@ -1,4 +1,5 @@
-﻿using _Project.StaticData.Level;
+﻿using _Project.StaticData.Enemy;
+using _Project.StaticData.Level;
 using _Project.StaticData.Player;
 
 namespace _Project.Services.StaticDataService
@@ -8,5 +9,6 @@ namespace _Project.Services.StaticDataService
         void Initialize();
         PlayerStaticData PlayerData { get; }
         LevelStaticData GetLevelStaticData(int levelIndex);
+        EnemyData GetEnemyData(EnemyType enemyType);
     }
 }

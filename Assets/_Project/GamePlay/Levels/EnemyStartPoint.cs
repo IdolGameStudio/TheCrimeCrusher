@@ -1,3 +1,4 @@
+using _Project.StaticData.Enemy;
 using _Project.StaticData.Level;
 using UnityEngine;
 

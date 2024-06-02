@@ -10,5 +10,6 @@ namespace _Project.Infrastructure.Factories
         void CreatePlayer();
         void CreateLevel(int level);
         GameObject Player { get; }
+        void CreateEnemyInLevel(int level);
     }
 }

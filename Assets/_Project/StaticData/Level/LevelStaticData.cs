@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Project.StaticData.Enemy;
 using UnityEngine;
 
 namespace _Project.StaticData.Level
@@ -9,6 +10,6 @@ namespace _Project.StaticData.Level
         public int LevelIndex;
         public GameObject Prefab;
         public Vector3 PlayerPosition;
-        public List<EnemiesData> Enemies;
+        public List<EnemiesLevelData> Enemies;
     }
 }

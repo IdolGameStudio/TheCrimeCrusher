@@ -14,8 +14,13 @@ namespace _Project.GamePlay.CharacterSM
 
         private CharacterStateMachine _stateMachine = new CharacterStateMachine();
         private IInputService _inputService;
+        
         private PlayerIdle _playerIdle;
         private PlayerWalkState _playerWalkState;
+
+        public PlayerIdle Idle => _playerIdle;
+
+        public PlayerWalkState WalkState => _playerWalkState;
 
         [Inject]
         private void Construct(IInputService inputService)
@@ -26,19 +31,15 @@ namespace _Project.GamePlay.CharacterSM
         private void Start()
         {
             _playerIdle = new PlayerIdle(_playerAnimator);
-            _playerWalkState = new PlayerWalkState(_characterController, _inputService, _playerData, _playerAnimator);
-            _stateMachine.ChangeState(_playerIdle);
+            _playerWalkState = new PlayerWalkState(_stateMachine, this, _characterController, _inputService, _playerData, _playerAnimator);
+            _stateMachine.ChangeState(Idle);
         }
 
         private void Update()
         {
             if (_inputService.IsMoving())
             {
-                _stateMachine.ChangeState(_playerWalkState);
-            }
-            else
-            {
-                _stateMachine.ChangeState(_playerIdle);
+                _stateMachine.ChangeState(WalkState);
             }
 
             _stateMachine.Update();

@@ -6,7 +6,9 @@ namespace _Project.GamePlay.CharacterSM
 
         public void ChangeState(ICharacterState newState)
         {
-            if (currentState != null)
+            if (newState == currentState )
+                return;
+            if (currentState != null )
                 currentState.Exit();
 
             currentState = newState;

@@ -8,7 +8,7 @@ namespace _Project.Services.StaticDataService
     {
         void Initialize();
         PlayerStaticData PlayerData { get; }
-        LevelStaticData GetLevelStaticData(int levelIndex);
+        LevelStaticData GetLevelStaticData(string levelName);
         EnemyData GetEnemyData(EnemyType enemyType);
     }
 }

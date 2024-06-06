@@ -8,8 +8,7 @@ namespace _Project.Infrastructure.Factories
         IHUDRoot CreateHUD();
         void Cleanup();
         void CreatePlayer();
-        void CreateLevel(int level);
         GameObject Player { get; }
-        void CreateEnemyInLevel(int level);
+        void CreateEnemyInLevel();
     }
 }

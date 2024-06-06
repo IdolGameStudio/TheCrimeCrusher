@@ -13,7 +13,7 @@ namespace _Project.Services.StaticDataService
         private const string LevelsPath = "StaticData/Levels";
         private const string EnemyPath = "StaticData/Enemy/EnemyStaticData";
 
-        private Dictionary<int, LevelStaticData> _levels;
+        private Dictionary<string, LevelStaticData> _levels;
         private Dictionary<EnemyType, EnemyData> _enemies;
         private PlayerStaticData _playerStaticData;
 
@@ -26,12 +26,12 @@ namespace _Project.Services.StaticDataService
 
             _playerStaticData = Resources.Load<PlayerStaticData>(PlayerPath);
             _enemies = Resources.Load<EnemyStaticData>(EnemyPath).Enemies.ToDictionary(x => x.EnemyType, x => x);
-            _levels = Resources.LoadAll<LevelStaticData>(LevelsPath).ToDictionary(x => x.LevelIndex, x => x);
+            _levels = Resources.LoadAll<LevelStaticData>(LevelsPath).ToDictionary(x => x.LevelName, x => x);
         }
 
 
-        public LevelStaticData GetLevelStaticData(int levelIndex) =>
-            _levels.TryGetValue(levelIndex, out LevelStaticData levelData)
+        public LevelStaticData GetLevelStaticData(string levelName) =>
+            _levels.TryGetValue(levelName, out LevelStaticData levelData)
                 ? levelData
                 : null;
 

@@ -36,11 +36,9 @@ namespace _Project.Infrastructure.FSM.States
         {
             _loadingCurtain.Hide();
             Debug.Log("LoadLevelState OnLoaded");
-            int startLevelIndex = 0;
-            _gameFactory.CreateLevel(startLevelIndex);
             _gameFactory.CreatePlayer();
             Camera.main.GetComponent<VirtualCameraControl>().VirtualCamera.Follow = _gameFactory.Player.transform;
-            _gameFactory.CreateEnemyInLevel(startLevelIndex);
+            _gameFactory.CreateEnemyInLevel();
             _gameStateMachine.Enter<GameLoopState>();
         }
 

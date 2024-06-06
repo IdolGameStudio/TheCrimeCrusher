@@ -4,6 +4,7 @@ using _Project.StaticData.Enemy;
 using _Project.StaticData.Level;
 using _Project.UI.HUD;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace _Project.Infrastructure.Factories
@@ -16,7 +17,6 @@ namespace _Project.Infrastructure.Factories
         
 
         private GameObject _player;
-        private int _currentLevel;
 
         public GameFactory(DiContainer diContainer, HUDRoot.Factory hudFactory, IStaticDataService staticDataService)
         {
@@ -39,19 +39,15 @@ namespace _Project.Infrastructure.Factories
             _player = _diContainer.InstantiatePrefab(_staticDataService.PlayerData.Prefab);
             _player.GetComponent<PlayerData>().Initialize(_staticDataService.PlayerData);
             _player.SetActive(false);
-            _player.transform.position = _staticDataService.GetLevelStaticData(_currentLevel).PlayerPosition;
+            string levelName = SceneManager.GetActiveScene().name;
+            _player.transform.position = _staticDataService.GetLevelStaticData(levelName).PlayerPosition;
             _player.SetActive(true);
         }
-
-        public void CreateLevel(int level)
-        {
-            _currentLevel = level;
-            _diContainer.InstantiatePrefab(_staticDataService.GetLevelStaticData(level).Prefab);
-        }
         
-        public void CreateEnemyInLevel(int level)
+        public void CreateEnemyInLevel()
         {
-            LevelStaticData levelStaticData = _staticDataService.GetLevelStaticData(level);
+            string levelName = SceneManager.GetActiveScene().name;
+            LevelStaticData levelStaticData = _staticDataService.GetLevelStaticData(levelName);
             foreach (EnemiesLevelData enemy in levelStaticData.Enemies)
             {
                 CreateEnemy(enemy.EnemyType, enemy.EnemyPosition);

@@ -1,4 +1,5 @@
-﻿using _Project.GamePlay.Player;
+﻿using System.Collections.Generic;
+using _Project.GamePlay.Player;
 using _Project.Services.StaticDataService;
 using _Project.StaticData.Enemy;
 using _Project.StaticData.Level;
@@ -14,7 +15,8 @@ namespace _Project.Infrastructure.Factories
         private readonly DiContainer _diContainer;
         private readonly HUDRoot.Factory _hudFactory;
         private readonly IStaticDataService _staticDataService;
-        
+
+        private List<GameObject> _enemies = new List<GameObject>();
 
         private GameObject _player;
 
@@ -27,11 +29,12 @@ namespace _Project.Infrastructure.Factories
 
         public GameObject Player => _player;
 
+        public List<GameObject> Enemies => _enemies;
+
         public IHUDRoot CreateHUD() => _hudFactory.Create();
 
         public void Cleanup()
         {
-            
         }
 
         public void CreatePlayer()
@@ -43,7 +46,7 @@ namespace _Project.Infrastructure.Factories
             _player.transform.position = _staticDataService.GetLevelStaticData(levelName).PlayerPosition;
             _player.SetActive(true);
         }
-        
+
         public void CreateEnemyInLevel()
         {
             string levelName = SceneManager.GetActiveScene().name;
@@ -56,8 +59,9 @@ namespace _Project.Infrastructure.Factories
 
         private void CreateEnemy(EnemyType enemyType, Vector3 enemyPosition)
         {
-            _diContainer.InstantiatePrefab(_staticDataService.GetEnemyData(enemyType).Prefab, enemyPosition,
+            var enemy = _diContainer.InstantiatePrefab(_staticDataService.GetEnemyData(enemyType).Prefab, enemyPosition,
                 Quaternion.identity, null);
+            _enemies.Add(enemy);
         }
     }
 }

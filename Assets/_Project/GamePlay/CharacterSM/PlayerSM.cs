@@ -1,5 +1,6 @@
 using _Project.GamePlay.CharacterSM.PlayerState;
 using _Project.GamePlay.Player;
+using _Project.Infrastructure.FSM;
 using _Project.Services.InputService;
 using UnityEngine;
 using Zenject;
@@ -26,6 +27,11 @@ namespace _Project.GamePlay.CharacterSM
         private void Construct(IInputService inputService)
         {
             _inputService = inputService;
+        }
+
+        public void ChangeState(ICharacterState characterState)
+        {
+            _stateMachine.ChangeState(characterState);
         }
 
         private void Start()

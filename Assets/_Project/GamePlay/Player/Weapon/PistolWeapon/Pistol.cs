@@ -1,7 +1,5 @@
 using _Project.GamePlay.CharacterSM;
-using _Project.Infrastructure.Factories;
 using UnityEngine;
-using Zenject;
 
 namespace _Project.GamePlay.Player.Weapon.PistolWeapon
 {
@@ -11,11 +9,9 @@ namespace _Project.GamePlay.Player.Weapon.PistolWeapon
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private FindNearbyTarget _targetFinder;
 
-        [SerializeField] private float _damage;
-        [SerializeField] private float _timeBetweenShots;
-        [SerializeField] private float _reloadTime;
-        [SerializeField] private float _range;
-        [SerializeField] private int _maxBullet;
+        [SerializeField] private PistolData _pistolData;
+        
+        [SerializeField] private PistolBulletSpawner _bulletSpawner;
 
         private float _currentTimeBetweenShots;
         private float _reloadTimer;
@@ -27,25 +23,44 @@ namespace _Project.GamePlay.Player.Weapon.PistolWeapon
 
         private void Start()
         {
-            _currentTimeBetweenShots = 0;
-            _reloadTimer = 0;
+            InitializeValues();
         }
 
-        [Inject]
-        private void Construct(IGameFactory gameFactory)
+        private void InitializeValues()
         {
+            _currentTimeBetweenShots = 0;
+            _reloadTimer = 0;
+            _currentBullet = _pistolData.MaxBullet;
+            _bulletSpawner.SetWeaponData(_pistolData);
         }
 
         private void Update()
         {
-            _target = _targetFinder.FindTarget();
+            UpdateTimers();
+            CheckReload();
+            CheckShoot();
+        }
+
+        private void UpdateTimers()
+        {
             _currentTimeBetweenShots -= Time.deltaTime;
             _reloadTimer -= Time.deltaTime;
-            if (_target == null) return;
-            if (_reloadTimer <= 0 && _isReloading) 
-                _isReloading = false;
+        }
 
-            if (_currentTimeBetweenShots <= 0 && !_isReloading)
+        private void CheckReload()
+        {
+            if (_reloadTimer <= 0 && _isReloading)
+            {
+                _isReloading = false;
+            }
+        }
+
+        private void CheckShoot()
+        {
+            _target = _targetFinder.FindTarget();
+            if (_target == null || _isReloading) return;
+
+            if (_currentTimeBetweenShots <= 0)
             {
                 Shoot();
                 if (_currentBullet <= 0) Reload();
@@ -54,16 +69,17 @@ namespace _Project.GamePlay.Player.Weapon.PistolWeapon
 
         private void Shoot()
         {
-                _currentTimeBetweenShots = _timeBetweenShots;
-                _currentBullet--;
-            
+            _currentTimeBetweenShots = _pistolData.TimeBetweenShots;
+            _currentBullet--;
+
+            _bulletSpawner.ShootAtTarget(_target);
         }
 
         private void Reload()
         {
             _isReloading = true;
-            _reloadTimer = _reloadTime;
-            _currentBullet = _maxBullet;
+            _reloadTimer = _pistolData.ReloadTime;
+            _currentBullet = _pistolData.MaxBullet;
         }
     }
 }

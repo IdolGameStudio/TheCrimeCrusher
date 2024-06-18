@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Project.GamePlay.Player.Weapon
+namespace _Project.GamePlay.Player.PlayerWeapon
 {
     public class ObjectPool : MonoBehaviour
     {

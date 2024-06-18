@@ -2,7 +2,7 @@ using _Project.Infrastructure.Factories;
 using UnityEngine;
 using Zenject;
 
-namespace _Project.GamePlay.Player.Weapon
+namespace _Project.GamePlay.Player.PlayerWeapon
 {
     public class FindNearbyTarget: MonoBehaviour
     {

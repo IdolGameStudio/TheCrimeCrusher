@@ -1,7 +1,7 @@
 using _Project.GamePlay.CharacterSM;
 using UnityEngine;
 
-namespace _Project.GamePlay.Player.Weapon.PistolWeapon
+namespace _Project.GamePlay.Player.PlayerWeapon.PistolWeapon
 {
     public class Pistol : MonoBehaviour
     {

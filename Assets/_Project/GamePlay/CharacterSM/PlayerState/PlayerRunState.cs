@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Project.GamePlay.CharacterSM.PlayerState
 {
-    public class PlayerWalkState : ICharacterState
+    public class PlayerRunState : ICharacterState
     {
         private readonly CharacterController _characterController;
         private readonly IInputService _inputService;
@@ -12,9 +12,9 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
         private readonly CharacterStateMachine _stateMachine;
         private readonly PlayerSM _playerSm;
         private Animator _animator;
-        private static readonly int _walk = Animator.StringToHash("Walk");
+        private static readonly int _run = Animator.StringToHash("Run");
 
-        public PlayerWalkState(CharacterStateMachine stateMachine, PlayerSM playerSM, CharacterController characterController, IInputService inputService, PlayerData playerData, Animator animator)
+        public PlayerRunState(CharacterStateMachine stateMachine, PlayerSM playerSM, CharacterController characterController, IInputService inputService, PlayerData playerData, Animator animator)
         {
             _stateMachine = stateMachine;
             _playerSm = playerSM;
@@ -26,7 +26,7 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
 
         public void Enter()
         {
-            _animator.SetBool(_walk, true);
+            _animator.SetBool(_run, true);
         }
 
         public void Execute()
@@ -45,7 +45,7 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
                 return;
             }
 
-            _characterController.Move(direction * _playerData.WalkSpeed * Time.deltaTime);
+            _characterController.Move(direction * _playerData.RunSpeed * Time.deltaTime);
         
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             _characterController.transform.rotation = Quaternion.Slerp(_characterController.transform.rotation, lookRotation, _playerData.RotationSpeed * Time.deltaTime);
@@ -53,7 +53,7 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
 
         public void Exit()
         {
-            _animator.SetBool(_walk, false);
+            _animator.SetBool(_run, false);
         }
     }
 }

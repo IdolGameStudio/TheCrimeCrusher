@@ -2,7 +2,7 @@ using _Project.GamePlay.Player;
 using _Project.Services.InputService;
 using UnityEngine;
 
-namespace _Project.GamePlay.CharacterSM
+namespace _Project.GamePlay.CharacterSM.PlayerState
 {
     public class PlayerStopState : ICharacterState
     {

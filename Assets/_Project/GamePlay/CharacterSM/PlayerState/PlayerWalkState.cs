@@ -11,14 +11,11 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
         private readonly PlayerData _playerData;
         private readonly CharacterStateMachine _stateMachine;
         private readonly PlayerSM _playerSm;
-        private Animator _animator;
-        private static readonly int _walk = Animator.StringToHash("Walk");
 
-        public PlayerWalkState(CharacterStateMachine stateMachine, PlayerSM playerSM, CharacterController characterController, IInputService inputService, PlayerData playerData, Animator animator)
+        public PlayerWalkState(CharacterStateMachine stateMachine, PlayerSM playerSM, CharacterController characterController, IInputService inputService, PlayerData playerData)
         {
             _stateMachine = stateMachine;
             _playerSm = playerSM;
-            _animator = animator;
             _characterController = characterController;
             _inputService = inputService;
             _playerData = playerData;
@@ -26,7 +23,6 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
 
         public void Enter()
         {
-            _animator.SetBool(_walk, true);
         }
 
         public void Execute()
@@ -53,7 +49,6 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
 
         public void Exit()
         {
-            _animator.SetBool(_walk, false);
         }
     }
 }

@@ -621,6 +621,8 @@ MonoBehaviour:
   _characterController: {fileID: -819523657607678030}
   _playerData: {fileID: -6951688884396191510}
   _playerAnimator: {fileID: 95497033138367770}
+  _currentWeapon:
+    range: 5
 --- !u!114 &-6951688884396191510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,7 +636,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkSpeed: 5
+  _runSpeed: 6
   _rotationSpeed: 5
+  _walkTimeBeforeRun: 1.5
+  _stopTime: 1
 --- !u!143 &-819523657607678030
 CharacterController:
   m_ObjectHideFlags: 0

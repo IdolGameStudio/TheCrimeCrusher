@@ -3,7 +3,7 @@ using _Project.Infrastructure.Factories;
 using _Project.Services.InputService;
 using UnityEngine;
 
-namespace _Project.GamePlay.CharacterSM
+namespace _Project.GamePlay.CharacterSM.PlayerState
 {
     public class PlayerAimState : ICharacterState
     {

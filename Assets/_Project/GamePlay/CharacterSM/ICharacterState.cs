@@ -4,6 +4,7 @@ namespace _Project.GamePlay.CharacterSM
     {
         void Enter();
         void Execute();
+        void LogicUpdate();
         void Exit();
     }
 }

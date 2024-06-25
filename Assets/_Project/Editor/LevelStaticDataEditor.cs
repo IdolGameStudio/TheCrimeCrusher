@@ -19,7 +19,11 @@ namespace _Project.Editor
             {
                 levelData.LevelName = SceneManager.GetActiveScene().name;
                 levelData.PlayerPosition = FindObjectOfType<PlayerStartPoint>().transform.position;
-                levelData.Enemies = FindObjectsOfType<EnemyStartPoint>().Select(x=> new EnemiesLevelData(x.EnemyType, x.transform.position)).ToList();
+                levelData.Enemies = FindObjectsOfType<EnemyStartPoint>().Select(x => new EnemiesLevelData(x.EnemyType, x.transform.position)).ToList();
+
+                // Добавляем сохранение изменений
+                EditorUtility.SetDirty(levelData);
+                AssetDatabase.SaveAssets();
             }
         }
     }

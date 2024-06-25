@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce33f9a46c974abfb22b2b2c78a5bd8b, type: 3}
   m_Name: Level01
   m_EditorClassIdentifier: 
-  LevelName: 
-  PlayerPosition: {x: 0, y: 0, z: 0}
-  Enemies: []
+  LevelName: 01Level
+  PlayerPosition: {x: 7.32, y: 0.1, z: 0}
+  Enemies:
+  - EnemyType: 0
+    EnemyPosition: {x: -5, y: 0.1, z: -2.58}
+  - EnemyType: 0
+    EnemyPosition: {x: -5, y: 0.1, z: 8.08}

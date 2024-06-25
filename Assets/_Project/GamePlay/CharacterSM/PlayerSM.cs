@@ -21,19 +21,14 @@ namespace _Project.GamePlay.CharacterSM
         private PlayerIdle _playerIdle;
         private PlayerWalkState _playerWalkState;
         private PlayerRunState _playerRunState;
-        private PlayerStopState _playerStopState;
         private PlayerAimState _playerAimState;
         private EnemyDetector _enemyDetector;
         
-        private static readonly int _walk = Animator.StringToHash("Walk");
-
-        private float _walkTime;
         private IGameFactory _gameFactory;
 
         public PlayerIdle Idle => _playerIdle;
         public PlayerWalkState WalkState => _playerWalkState;
         public PlayerRunState RunState => _playerRunState;
-        public PlayerStopState StopState => _playerStopState;
         public PlayerAimState AimState => _playerAimState;
 
 
@@ -49,13 +44,9 @@ namespace _Project.GamePlay.CharacterSM
             var enemies = _gameFactory.Enemies;
             _enemyDetector = new EnemyDetector(enemies);
 
-            _playerIdle = new PlayerIdle(_playerAnimator);
-            _playerWalkState = new PlayerWalkState(_stateMachine, this, _characterController, _inputService,
-                _playerData);
-            _playerRunState = new PlayerRunState(_stateMachine, this, _characterController, _inputService, _playerData,
-                _playerAnimator);
-            _playerStopState = new PlayerStopState(_stateMachine, this, _characterController, _playerData,
-                _playerAnimator, _inputService);
+            _playerIdle = new PlayerIdle(_playerAnimator, _inputService, _stateMachine, this);
+            _playerWalkState = new PlayerWalkState(_playerAnimator, _stateMachine, this, _characterController, _inputService, _playerData);
+            _playerRunState = new PlayerRunState(_stateMachine, this, _characterController, _inputService, _playerData, _playerAnimator);
             _playerAimState = new PlayerAimState(_stateMachine, this, _characterController, _playerData,
                 _playerAnimator, _inputService, _gameFactory);
             _stateMachine.ChangeState(Idle);
@@ -63,30 +54,9 @@ namespace _Project.GamePlay.CharacterSM
 
         private void Update()
         {
-            bool isMoving = _inputService.IsMoving();
-            _playerAnimator.SetBool(_walk, isMoving);
-            
-            if (isMoving)
-            {
-                _walkTime += Time.deltaTime;
-                if (_walkTime >= _playerData.WalkTimeBeforeRun)
-                {
-                    _stateMachine.ChangeState(RunState);
-                }
-                else
-                {
-                    _stateMachine.ChangeState(WalkState);
-                }
-            }
-            else
-            {
-                _walkTime = 0;
-                _stateMachine.ChangeState(StopState);
-            }
-
+            _stateMachine.LogicUpdate();
             _stateMachine.Update();
         }
-
         public bool CanShootEnemy()
         {
             return _enemyDetector.IsEnemyInRange(transform.position, _currentWeapon.range);

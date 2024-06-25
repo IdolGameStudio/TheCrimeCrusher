@@ -20,5 +20,11 @@ namespace _Project.GamePlay.CharacterSM
             if (currentState != null)
                 currentState.Execute();
         }
+
+        public void LogicUpdate()
+        {
+            if (currentState != null)
+                currentState.LogicUpdate();
+        }
     }
 }

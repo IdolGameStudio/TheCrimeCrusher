@@ -638,8 +638,8 @@ MonoBehaviour:
   _walkSpeed: 5
   _runSpeed: 6
   _rotationSpeed: 5
-  _walkTimeBeforeRun: 1.5
-  _stopTime: 1
+  _walkTimeBeforeRun: 0.5
+  _stopTime: 0.2
 --- !u!143 &-819523657607678030
 CharacterController:
   m_ObjectHideFlags: 0

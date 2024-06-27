@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Level01
   m_EditorClassIdentifier: 
   LevelName: 01Level
-  PlayerPosition: {x: 7.32, y: 0.1, z: 0}
+  PlayerPosition: {x: 0.34, y: 0.1, z: -43.59}
   Enemies:
   - EnemyType: 0
-    EnemyPosition: {x: -5, y: 0.1, z: -2.58}
+    EnemyPosition: {x: 4.96, y: 0.1, z: 17.57}
   - EnemyType: 0
-    EnemyPosition: {x: -5, y: 0.1, z: 8.08}
+    EnemyPosition: {x: -5, y: 0.1, z: 18.71}

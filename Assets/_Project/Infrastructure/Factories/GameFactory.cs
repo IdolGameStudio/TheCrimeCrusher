@@ -19,6 +19,8 @@ namespace _Project.Infrastructure.Factories
         private List<GameObject> _enemies = new List<GameObject>();
 
         private GameObject _player;
+        
+        private HUDRoot _hudRoot;
 
         public GameFactory(DiContainer diContainer, HUDRoot.Factory hudFactory, IStaticDataService staticDataService)
         {
@@ -31,7 +33,11 @@ namespace _Project.Infrastructure.Factories
 
         public List<GameObject> Enemies => _enemies;
 
-        public IHUDRoot CreateHUD() => _hudFactory.Create();
+        public IHUDRoot CreateHUD()
+        {
+            _hudRoot = _hudFactory.Create();
+            return _hudRoot;
+        }
 
         public void Cleanup()
         {

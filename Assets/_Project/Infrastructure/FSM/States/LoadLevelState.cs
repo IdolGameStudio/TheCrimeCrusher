@@ -1,5 +1,6 @@
 ﻿using _Project.GamePlay.Camera;
 using _Project.Infrastructure.Factories;
+using _Project.UI.Factories;
 using UnityEngine;
 using Zenject;
 
@@ -11,13 +12,15 @@ namespace _Project.Infrastructure.FSM.States
         private readonly ISceneLoader _sceneLoader;
         private readonly ILoadingCurtain _loadingCurtain;
         private readonly IGameFactory _gameFactory;
+        private readonly IUIFactory _uiFactory;
 
-        public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader, ILoadingCurtain loadingCurtain, IGameFactory gameFactory)
+        public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader, ILoadingCurtain loadingCurtain, IGameFactory gameFactory, IUIFactory uiFactory)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
             _gameFactory = gameFactory;
+            _uiFactory = uiFactory;
         }
 
         public void Enter(string sceneName)
@@ -39,6 +42,8 @@ namespace _Project.Infrastructure.FSM.States
             _gameFactory.CreatePlayer();
             Camera.main.GetComponent<VirtualCameraControl>().VirtualCamera.Follow = _gameFactory.Player.transform;
             _gameFactory.CreateEnemyInLevel();
+            _gameFactory.CreateHUD();
+            _uiFactory.CreateRootUI();
             _gameStateMachine.Enter<GameLoopState>();
         }
 

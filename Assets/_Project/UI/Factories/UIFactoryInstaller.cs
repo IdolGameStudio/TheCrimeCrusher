@@ -9,7 +9,7 @@ namespace _Project.UI.Factories
         public override void InstallBindings()
         {
             // bind ui sub-factories here
-            Container.BindFactory<InterfaceController, InterfaceController.Factory>().FromComponentInNewPrefabResource(InfrastructureAssetPath.Interface);
+            Container.BindFactory<InterfaceController, InterfaceController.Factory>().FromComponentInNewPrefabResource(InfrastructureAssetPath.UIRoot);
             
             Container.Bind<IUIFactory>().To<UIFactory>().AsSingle();
         }

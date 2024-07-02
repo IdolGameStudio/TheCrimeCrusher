@@ -12,13 +12,12 @@ namespace _Project.GamePlay.NPC
         {
             _deadFX.SetActive(true);
             StartCoroutine(CountDown());
-            Destroy(gameObject);
         }
 
         private IEnumerator CountDown()
         {
             yield return new WaitForSeconds(_timeToDied);
-            _deadFX.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }

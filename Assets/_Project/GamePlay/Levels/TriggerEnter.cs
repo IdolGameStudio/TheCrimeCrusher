@@ -8,10 +8,17 @@ namespace _Project.GamePlay.Levels
     {
         [SerializeField] private LevelOneController _levelOneController;
         [SerializeField] private int _nPCsIndexToOff;
+        
+        private bool _onTrigger = false;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<PlayerTag>()) _levelOneController.ChangeNPCs(0);
+            if(_onTrigger) return;
+            if (other.GetComponent<PlayerTag>())
+            {
+                _onTrigger = true;
+                _levelOneController.ChangeNPCs(_nPCsIndexToOff);
+            }
         }
     }
 }

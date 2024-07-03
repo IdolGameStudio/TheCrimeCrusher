@@ -16,6 +16,6 @@ MonoBehaviour:
   PlayerPosition: {x: 0, y: 0.1, z: -46.53}
   Enemies:
   - EnemyType: 0
-    EnemyPosition: {x: 4.96, y: 0.1, z: 17.57}
+    EnemyPosition: {x: 4.96, y: 0.1, z: 2.250001}
   - EnemyType: 0
-    EnemyPosition: {x: -5, y: 0.1, z: 18.71}
+    EnemyPosition: {x: -5, y: 0.1, z: 3.39}

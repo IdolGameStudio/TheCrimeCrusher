@@ -17,7 +17,7 @@ namespace _Project.Services.InputService
             return _inputDirection.normalized;
         }
 
-        public bool IsMoving() => Input.GetAxis(Horizontal) != 0 || Input.GetAxis(Vertical) != 0;
+        public bool IsMoving() => SimpleInput.GetAxis(Horizontal) != 0 || SimpleInput.GetAxis(Vertical) != 0;
         
     }
 }

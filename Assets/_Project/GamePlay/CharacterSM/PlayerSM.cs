@@ -54,8 +54,8 @@ namespace _Project.GamePlay.CharacterSM
 
         private void Update()
         {
-            _stateMachine.LogicUpdate();
             _stateMachine.Update();
+            _stateMachine.LogicUpdate();
         }
         public bool CanShootEnemy()
         {

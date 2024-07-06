@@ -69,7 +69,7 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
     {
         if (_currentTarget == null || !_playerSm.CanShootEnemy())
         {
-            _stateMachine.ChangeState(_playerSm.WalkState);
+            _stateMachine.ChangeState(_playerSm.RunState);
         }
         
         if (Time.time >= _nextCheckTime)
@@ -80,7 +80,7 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
                 _currentTarget = FindClosestEnemy();
                 if (_currentTarget == null)
                 {
-                    _stateMachine.ChangeState(_playerSm.WalkState);
+                    _stateMachine.ChangeState(_playerSm.RunState);
                 }
             }
         }

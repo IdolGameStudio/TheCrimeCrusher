@@ -60,7 +60,7 @@ namespace _Project.GamePlay.Player.PlayerWeapon.PistolWeapon
             _target = _targetFinder.FindTarget();
             if (_target == null || _isReloading) return;
 
-            if (_currentTimeBetweenShots <= 0)
+            if (_currentTimeBetweenShots <= 0 && _playerSM.CanShootEnemy())
             {
                 Shoot();
                 if (_currentBullet <= 0) Reload();

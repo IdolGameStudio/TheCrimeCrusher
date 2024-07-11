@@ -63,6 +63,8 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
         HandleMovementAnimation(relativeDirection);
 
         _characterController.Move(inputDirection * _playerData.RunSpeed * Time.deltaTime);
+
+        if (_currentTarget != FindClosestEnemy()) _currentTarget = FindClosestEnemy();
     }
 
     public void LogicUpdate()

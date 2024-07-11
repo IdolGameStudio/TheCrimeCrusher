@@ -1,8 +1,8 @@
-using System;
 using _Project.GamePlay.CharacterSM.PlayerState;
 using _Project.GamePlay.Player;
 using _Project.Infrastructure.Factories;
 using _Project.Services.InputService;
+using _Project.StaticData.Weapon;
 using UnityEngine;
 using Zenject;
 
@@ -23,7 +23,7 @@ namespace _Project.GamePlay.CharacterSM
         private PlayerRunState _playerRunState;
         private PlayerAimState _playerAimState;
         private EnemyDetector _enemyDetector;
-        
+
         private IGameFactory _gameFactory;
 
         public PlayerIdle Idle => _playerIdle;
@@ -45,8 +45,10 @@ namespace _Project.GamePlay.CharacterSM
             _enemyDetector = new EnemyDetector(enemies);
 
             _playerIdle = new PlayerIdle(_playerAnimator, _inputService, _stateMachine, this);
-            _playerWalkState = new PlayerWalkState(_playerAnimator, _stateMachine, this, _characterController, _inputService, _playerData);
-            _playerRunState = new PlayerRunState(_stateMachine, this, _characterController, _inputService, _playerData, _playerAnimator);
+            _playerWalkState = new PlayerWalkState(_playerAnimator, _stateMachine, this, _characterController,
+                _inputService, _playerData);
+            _playerRunState = new PlayerRunState(_stateMachine, this, _characterController, _inputService, _playerData,
+                _playerAnimator);
             _playerAimState = new PlayerAimState(_stateMachine, this, _characterController, _playerData,
                 _playerAnimator, _inputService, _gameFactory);
             _stateMachine.ChangeState(Idle);
@@ -57,15 +59,10 @@ namespace _Project.GamePlay.CharacterSM
             _stateMachine.Update();
             _stateMachine.LogicUpdate();
         }
+
         public bool CanShootEnemy()
         {
-            return _enemyDetector.IsEnemyInRange(transform.position, _currentWeapon.range);
+            return _enemyDetector.IsEnemyInRange(transform.position, _currentWeapon.Range);
         }
-    }
-
-    [Serializable]
-    public class WeaponData
-    {
-        public float range;
     }
 }

@@ -5,9 +5,9 @@ namespace _Project.GamePlay.Player.PlayerWeapon
 {
     public class ObjectPool : MonoBehaviour
     {
-        [SerializeField] private GameObject _prefab;
         [SerializeField] private int _initialSize = 10;
 
+        private GameObject _prefab;
         private Queue<GameObject> _pool = new Queue<GameObject>();
 
         public void SetPrefab(GameObject prefab)

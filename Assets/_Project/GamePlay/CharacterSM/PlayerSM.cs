@@ -60,6 +60,11 @@ namespace _Project.GamePlay.CharacterSM
             _stateMachine.LogicUpdate();
         }
 
+        public void ChangeWeaponRange(float range)
+        {
+            _currentWeapon.Range = range;
+        }
+
         public bool CanShootEnemy()
         {
             return _enemyDetector.IsEnemyInRange(transform.position, _currentWeapon.Range);

@@ -36,6 +36,7 @@ namespace _Project.Infrastructure.Factories
         public IHUDRoot CreateHUD()
         {
             _hudRoot = _hudFactory.Create();
+            _hudRoot.Initialize();
             return _hudRoot;
         }
 

@@ -5,7 +5,7 @@ namespace _Project.StaticData.Weapon
     [SerializeField]
     public enum WeaponID
     {
-        LaserGun,
+        LaserPistol,
         PlasmaRifle,
         ElectromagneticHammer,
         FireDrone,

@@ -1,7 +1,9 @@
-﻿namespace _Project.Services.PlayerProgressService
+﻿using _Project.Data;
+
+namespace _Project.Services.PlayerProgressService
 {
     public class PlayerProgressService : IPlayerProgressService
     {
-        public Data.PlayerProgress Progress { get; set; }
+        public PlayerProgress Progress { get; set; }
     }
 }

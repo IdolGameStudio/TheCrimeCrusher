@@ -1867,7 +1867,7 @@ GameObject:
   - component: {fileID: 4278763119775525452}
   - component: {fileID: 8988892163273400856}
   m_Layer: 0
-  m_Name: LaserGun
+  m_Name: LaserPistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1935,7 +1935,7 @@ MonoBehaviour:
   _damage: 10
   _timeBetweenShots: 2
   _reloadTime: 5
-  _range: 30
+  _range: 5
   _maxBullet: 5
   _bulletSpeed: 50
   _shootSound: {fileID: 0}
@@ -2163,7 +2163,7 @@ MonoBehaviour:
   _damage: 10
   _timeBetweenShots: 5
   _reloadTime: 5
-  _range: 50
+  _range: 30
   _maxBullet: 5
   _bulletSpeed: 50
   _shootSound: {fileID: 0}
@@ -2259,5 +2259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bdc382c39c54f4b84032ba42f356391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _laserGun: {fileID: 85677367143293661}
-  _plasmaRifle: {fileID: 0}
+  _playerSM: {fileID: -5177605844538437337}
+  _laserPistol: {fileID: 85677367143293661}
+  _plasmaRifle: {fileID: 7324815026786299297}

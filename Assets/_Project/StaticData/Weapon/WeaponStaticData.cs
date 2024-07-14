@@ -8,6 +8,8 @@ namespace _Project.StaticData.Weapon
     {
         public WeaponID WeaponID;
         public Sprite WeaponSprite;
+        public AudioClip ShootSound;
+        public GameObject BulletPrefab;
         public List<WeaponData> WeaponData;
     }
 }

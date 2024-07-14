@@ -559,6 +559,7 @@ GameObject:
   - component: {fileID: -819523657607678030}
   - component: {fileID: 4500947115544955554}
   - component: {fileID: 1257262346862623617}
+  - component: {fileID: 6225010811415955433}
   m_Layer: 0
   m_Name: Character_CyberPunk_Male_01
   m_TagString: Untagged
@@ -627,6 +628,8 @@ MonoBehaviour:
     Damage: 0
     TimeBetweenShots: 0
     ReloadTime: 0
+    BulletsCount: 0
+    BulletSpeed: 0
 --- !u!114 &-6951688884396191510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +696,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c8825fca884f9995d179ccceb3db9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6225010811415955433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447477219941586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175cb434e0ef4c39a7ab5b5376cfee7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _laserPistolData: {fileID: 4278763119775525452}
+  _plasmaRifleData: {fileID: 8332149599204206891}
 --- !u!1 &1526264892611512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,14 +1949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54576972b07c4c01a1d0c8ff30abbb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
-  _timeBetweenShots: 2
-  _reloadTime: 5
-  _range: 5
-  _maxBullet: 5
-  _bulletSpeed: 50
-  _shootSound: {fileID: 0}
-  _bulletPrefab: {fileID: 1755847157913497845, guid: eaa2ac5d513f2c34dad9f912d898d5d4, type: 3}
+  _id: 0
+  _pistol: {fileID: 6451064517338921718}
 --- !u!114 &8988892163273400856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2160,14 +2171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54576972b07c4c01a1d0c8ff30abbb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
-  _timeBetweenShots: 5
-  _reloadTime: 5
-  _range: 30
-  _maxBullet: 5
-  _bulletSpeed: 50
-  _shootSound: {fileID: 0}
-  _bulletPrefab: {fileID: 1755847157913497845, guid: eaa2ac5d513f2c34dad9f912d898d5d4, type: 3}
+  _id: 1
+  _pistol: {fileID: 7022799702145163764}
 --- !u!114 &1243513734694829016
 MonoBehaviour:
   m_ObjectHideFlags: 0

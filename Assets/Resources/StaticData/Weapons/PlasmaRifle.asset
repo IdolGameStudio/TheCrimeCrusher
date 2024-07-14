@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a09e400036343a185552e1b78360881, type: 3}
+  m_Name: PlasmaRifle
+  m_EditorClassIdentifier: 
+  WeaponID: 1
+  WeaponSprite: {fileID: 21300000, guid: 089986b444f192d46b60d640552ba8ed, type: 3}
+  ShootSound: {fileID: 0}
+  BulletPrefab: {fileID: 1755847157913497845, guid: eaa2ac5d513f2c34dad9f912d898d5d4, type: 3}
+  WeaponData:
+  - Range: 30
+    Damage: 10
+    TimeBetweenShots: 3
+    ReloadTime: 5
+    BulletsCount: 3
+    BulletSpeed: 10

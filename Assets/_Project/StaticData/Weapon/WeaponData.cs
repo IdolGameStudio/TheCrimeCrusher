@@ -8,6 +8,9 @@ namespace _Project.StaticData.Weapon
         public float Range;
         public float Damage;
         public float TimeBetweenShots;
-        public float ReloadTime; 
+        public float ReloadTime;
+        public int BulletsCount;
+        public float BulletSpeed;
+        
     }
 }

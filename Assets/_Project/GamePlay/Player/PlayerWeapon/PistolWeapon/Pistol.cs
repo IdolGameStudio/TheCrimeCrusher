@@ -21,16 +21,11 @@ namespace _Project.GamePlay.Player.PlayerWeapon.PistolWeapon
         private bool _isAiming;
         private bool _isReloading;
 
-        private void Start()
-        {
-            InitializeValues();
-        }
-
-        private void InitializeValues()
+        public void InitializeValues()
         {
             _currentTimeBetweenShots = 0;
             _reloadTimer = 0;
-            _currentBullet = _pistolData.MaxBullet;
+            _currentBullet = _pistolData.BulletsCount;
             _bulletSpawner.SetWeaponData(_pistolData);
         }
 
@@ -79,7 +74,7 @@ namespace _Project.GamePlay.Player.PlayerWeapon.PistolWeapon
         {
             _isReloading = true;
             _reloadTimer = _pistolData.ReloadTime;
-            _currentBullet = _pistolData.MaxBullet;
+            _currentBullet = _pistolData.BulletsCount;
         }
     }
 }

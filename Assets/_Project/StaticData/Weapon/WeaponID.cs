@@ -8,6 +8,5 @@ namespace _Project.StaticData.Weapon
         LaserPistol,
         PlasmaRifle,
         ElectromagneticHammer,
-        FireDrone,
     }
 }

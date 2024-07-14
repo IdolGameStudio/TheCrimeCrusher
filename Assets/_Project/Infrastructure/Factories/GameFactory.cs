@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using _Project.GamePlay.Player;
+using _Project.GamePlay.Player.PlayerWeapon;
+using _Project.Services.PlayerProgressService;
 using _Project.Services.StaticDataService;
 using _Project.StaticData.Enemy;
 using _Project.StaticData.Level;
+using _Project.StaticData.Weapon;
 using _Project.UI.HUD;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +18,7 @@ namespace _Project.Infrastructure.Factories
         private readonly DiContainer _diContainer;
         private readonly HUDRoot.Factory _hudFactory;
         private readonly IStaticDataService _staticDataService;
+        private readonly IPlayerProgressService _playerProgressService;
 
         private List<GameObject> _enemies = new List<GameObject>();
 
@@ -22,11 +26,12 @@ namespace _Project.Infrastructure.Factories
         
         private HUDRoot _hudRoot;
 
-        public GameFactory(DiContainer diContainer, HUDRoot.Factory hudFactory, IStaticDataService staticDataService)
+        public GameFactory(DiContainer diContainer, HUDRoot.Factory hudFactory, IStaticDataService staticDataService, IPlayerProgressService playerProgressService)
         {
             _diContainer = diContainer;
             _hudFactory = hudFactory;
             _staticDataService = staticDataService;
+            _playerProgressService = playerProgressService;
         }
 
         public GameObject Player => _player;
@@ -48,6 +53,28 @@ namespace _Project.Infrastructure.Factories
         {
             _player = _diContainer.InstantiatePrefab(_staticDataService.PlayerData.Prefab);
             _player.GetComponent<PlayerData>().Initialize(_staticDataService.PlayerData);
+            SetWeaponLevel();
+            SetPlayerPositionInLevel();
+            _player.GetComponentInChildren<ChooseCurrentWeapon>().ChangeWeapon(WeaponID.LaserPistol);
+        }
+
+        private void SetWeaponLevel()
+        {
+            if(_playerProgressService.Progress.LaserPistolLevel > 0)
+                _player.GetComponent<WeaponUpgrader>().Upgrade(WeaponID.LaserPistol, _playerProgressService.Progress.LaserPistolLevel-1);
+
+            if(_playerProgressService.Progress.PlasmaRifleLevel > 0)
+                _player.GetComponent<WeaponUpgrader>().Upgrade(WeaponID.PlasmaRifle, _playerProgressService.Progress.PlasmaRifleLevel-1);
+
+            // if(_playerProgressService.Progress.ElectromagneticHammerLevel > 0)
+            //     _player.GetComponent<WeaponUpgrader>().Upgrade(WeaponID.ElectromagneticHammer, _playerProgressService.Progress.ElectromagneticHammerLevel);
+            //
+            // if(_playerProgressService.Progress.FireDroneLevel > 0)
+            //     _player.GetComponent<WeaponUpgrader>().Upgrade(WeaponID.FireDrone, _playerProgressService.Progress.FireDroneLevel);
+        }
+
+        private void SetPlayerPositionInLevel()
+        {
             _player.SetActive(false);
             string levelName = SceneManager.GetActiveScene().name;
             _player.transform.position = _staticDataService.GetLevelStaticData(levelName).PlayerPosition;

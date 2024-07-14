@@ -32,7 +32,6 @@ namespace _Project.UI.HUD
             if (_playerProgressService.Progress.PlasmaRifleLevel > 0) _plasmaRifle.SetActive(true);
             if (_playerProgressService.Progress.ElectromagneticHammerLevel > 0) _electromagneticHammer.SetActive(true);
             if (_playerProgressService.Progress.FireDroneLevel > 0) _fireDrone.SetActive(true);
-            ChangeWeapon(WeaponID.LaserPistol);
         }
 
         public void ChangeWeapon(WeaponID weaponID) => 

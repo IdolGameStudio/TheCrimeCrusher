@@ -40,9 +40,9 @@ namespace _Project.Infrastructure.FSM.States
             _loadingCurtain.Hide();
             Debug.Log("LoadLevelState OnLoaded");
             _gameFactory.CreatePlayer();
+            _gameFactory.CreateHUD();
             Camera.main.GetComponent<VirtualCameraControl>().VirtualCamera.Follow = _gameFactory.Player.transform;
             _gameFactory.CreateEnemyInLevel();
-            _gameFactory.CreateHUD();
             _uiFactory.CreateRootUI();
             _gameStateMachine.Enter<GameLoopState>();
         }

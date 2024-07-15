@@ -17,7 +17,7 @@ MonoBehaviour:
   ShootSound: {fileID: 0}
   BulletPrefab: {fileID: 1755847157913497845, guid: eaa2ac5d513f2c34dad9f912d898d5d4, type: 3}
   WeaponData:
-  - Range: 15
+  - Range: 5
     Damage: 10
     TimeBetweenShots: 1
     ReloadTime: 4

@@ -15,9 +15,9 @@ MonoBehaviour:
   WeaponID: 1
   WeaponSprite: {fileID: 21300000, guid: 089986b444f192d46b60d640552ba8ed, type: 3}
   ShootSound: {fileID: 0}
-  BulletPrefab: {fileID: 1755847157913497845, guid: eaa2ac5d513f2c34dad9f912d898d5d4, type: 3}
+  BulletPrefab: {fileID: 374931975161267548, guid: c9aead74d5b7a20408404b396d1687e1, type: 3}
   WeaponData:
-  - Range: 30
+  - Range: 40
     Damage: 10
     TimeBetweenShots: 3
     ReloadTime: 5

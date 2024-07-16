@@ -5,7 +5,6 @@ using _Project.Services.PlayerProgressService;
 using _Project.Services.StaticDataService;
 using _Project.StaticData.Weapon;
 using _Project.UI.HUD.Weapons;
-using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -17,6 +16,9 @@ namespace _Project.UI.HUD
         [SerializeField] private WeaponItemController _plasmaRifle;
         [SerializeField] private WeaponItemController _electromagneticHammer;
         [SerializeField] private GameObject _fireDrone;
+        
+        [SerializeField] private CurrentWeapon _currentWeapon;
+        
         private IPlayerProgressService _playerProgressService;
         private IGameFactory _gameFactory;
 
@@ -38,6 +40,7 @@ namespace _Project.UI.HUD
             if (_playerProgressService.Progress.PlasmaRifleLevel > 0) AddWeaponOnHUD(WeaponID.PlasmaRifle);
             if (_playerProgressService.Progress.ElectromagneticHammerLevel > 0) AddWeaponOnHUD(WeaponID.ElectromagneticHammer);
             if (_playerProgressService.Progress.FireDroneLevel > 0) _fireDrone.SetActive(true);
+            ChangeWeapon(WeaponID.LaserPistol);
         }
 
         private void AddWeaponOnHUD(WeaponID weaponID)
@@ -61,8 +64,11 @@ namespace _Project.UI.HUD
             }
         }
 
-        public void ChangeWeapon(WeaponID weaponID) => 
+        public void ChangeWeapon(WeaponID weaponID)
+        {
             _chooseCurrentWeapon.ChangeWeapon(weaponID);
+            _currentWeapon.SetIcon(_staticDataService.GetWeaponData(weaponID).WeaponSprite);
+        }
 
         public class Factory : PlaceholderFactory<HUDRoot>
         {

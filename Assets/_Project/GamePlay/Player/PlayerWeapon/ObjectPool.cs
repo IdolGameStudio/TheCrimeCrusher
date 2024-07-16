@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Project.GamePlay.Player.PlayerWeapon.PistolWeapon;
 using UnityEngine;
 
 namespace _Project.GamePlay.Player.PlayerWeapon
@@ -9,10 +10,12 @@ namespace _Project.GamePlay.Player.PlayerWeapon
 
         private GameObject _prefab;
         private Queue<GameObject> _pool = new Queue<GameObject>();
+        private PistolData _pistolData;
 
-        public void SetPrefab(GameObject prefab)
+        public void SetWeaponData(PistolData pistolData)
         {
-            _prefab = prefab;
+            _pistolData = pistolData;
+            _prefab = _pistolData.BulletPrefab;
             InitializePool();
         }
 

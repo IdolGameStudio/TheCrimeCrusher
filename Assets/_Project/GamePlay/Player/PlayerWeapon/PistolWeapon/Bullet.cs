@@ -9,44 +9,27 @@ namespace _Project.GamePlay.Player.PlayerWeapon.PistolWeapon
         private float _speed;
         private ObjectPool _pool;
 
-        private void OnEnable()
-        {
+        public float Damage => _damage;
+
+        private void OnEnable() => 
             Invoke("ReturnToPool", _lifeTime);
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() => 
             CancelInvoke();
-        }
 
-        private void Update()
-        {
+        private void Update() => 
             transform.Translate(Vector3.forward * _speed * Time.deltaTime);
-        }
 
-        public void SetDamage(float damage)
-        {
+        public void SetDamage(float damage) => 
             _damage = damage;
-        }
 
-        public void SetSpeed(float speed)
-        {
+        public void SetSpeed(float speed) => 
             _speed = speed;
-        }
 
-        public void SetPool(ObjectPool pool)
-        {
+        public void SetPool(ObjectPool pool) => 
             _pool = pool;
-        }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            ReturnToPool();
-        }
-
-        private void ReturnToPool()
-        {
+        public void ReturnToPool() => 
             _pool.ReturnObject(gameObject);
-        }
     }
 }

@@ -26,7 +26,7 @@ namespace _Project.GamePlay.Player.PlayerWeapon.PistolWeapon
 
             if (_bulletPool != null)
             {
-                _bulletPool.SetPrefab(_weaponData.BulletPrefab);
+                _bulletPool.SetWeaponData(_weaponData);
             }
         }
 

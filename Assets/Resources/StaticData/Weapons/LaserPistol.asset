@@ -15,7 +15,7 @@ MonoBehaviour:
   WeaponID: 0
   WeaponSprite: {fileID: 21300000, guid: 976e84409a8a83d46b194df9bf7e0bad, type: 3}
   ShootSound: {fileID: 0}
-  BulletPrefab: {fileID: 1755847157913497845, guid: eaa2ac5d513f2c34dad9f912d898d5d4, type: 3}
+  BulletPrefab: {fileID: 6606909370217167209, guid: 06431cbe748abd048b6281c424663cfd, type: 3}
   WeaponData:
   - Range: 5
     Damage: 10

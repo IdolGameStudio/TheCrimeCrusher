@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Project.GamePlay.Enemy;
 using _Project.GamePlay.Player;
 using _Project.GamePlay.Player.PlayerWeapon;
 using _Project.Services.PlayerProgressService;
@@ -95,6 +96,8 @@ namespace _Project.Infrastructure.Factories
         {
             var enemy = _diContainer.InstantiatePrefab(_staticDataService.GetEnemyData(enemyType).Prefab, enemyPosition,
                 Quaternion.identity, null);
+
+            enemy.GetComponent<EnemyDataMonoBehavior>().Initialize(_staticDataService.GetEnemyData(enemyType));
             _enemies.Add(enemy);
         }
     }

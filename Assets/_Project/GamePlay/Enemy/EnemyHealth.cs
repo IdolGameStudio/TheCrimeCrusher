@@ -1,18 +1,19 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Project.GamePlay.Enemy
 {
     public class EnemyHealth : MonoBehaviour
     {
         [SerializeField] private EnemyDeath _enemyDeath;
-        [SerializeField] private EnemyData _enemyData;
+        [FormerlySerializedAs("_enemyData")] [SerializeField] private EnemyDataMonoBehavior _enemyDataMonoBehavior;
         
         private float _currentHealth;
         private float _maxHealth;
 
         private void Start()
         {
-            _maxHealth = _enemyData.MaxHealth;
+            _maxHealth = _enemyDataMonoBehavior.MaxHealth;
             ResetHealth();
         }
 

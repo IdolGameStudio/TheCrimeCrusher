@@ -45,13 +45,16 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
 
     public void Execute()
     {
+        if (_currentTarget != FindClosestEnemy()) _currentTarget = FindClosestEnemy();
+        if (_currentTarget == null) return;
+      
         Vector3 directionToTarget = (_currentTarget.transform.position - _characterController.transform.position)
             .normalized;
         Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
         _characterController.transform.rotation = Quaternion.Slerp(_characterController.transform.rotation,
             lookRotation, _playerData.RotationSpeed * Time.deltaTime);
 
-            Vector3 inputDirection = _inputService.GetInputDirection();
+        Vector3 inputDirection = _inputService.GetInputDirection();
         if (inputDirection == Vector3.zero)
         {
             _animator.SetFloat(_horizontal, 0);
@@ -63,8 +66,6 @@ namespace _Project.GamePlay.CharacterSM.PlayerState
         HandleMovementAnimation(relativeDirection);
 
         _characterController.Move(inputDirection * _playerData.RunSpeed * Time.deltaTime);
-
-        if (_currentTarget != FindClosestEnemy()) _currentTarget = FindClosestEnemy();
     }
 
     public void LogicUpdate()

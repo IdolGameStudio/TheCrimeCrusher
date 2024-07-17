@@ -18,7 +18,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 7216212975594293120, guid: 007c496ca353bc44b9e6a6ee066ea280, type: 3}
   WeaponData:
   - Range: 40
-    Damage: 10
+    Damage: 15
     TimeBetweenShots: 3
     ReloadTime: 5
     BulletsCount: 3

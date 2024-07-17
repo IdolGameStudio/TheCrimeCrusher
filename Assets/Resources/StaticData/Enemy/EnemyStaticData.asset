@@ -16,5 +16,5 @@ MonoBehaviour:
   - EnemyType: 0
     Damage: 10
     Speed: 0
-    Health: 0
+    Health: 30
     Prefab: {fileID: 1011517095537918, guid: 6f94caaacaf56ed44b13c6e0737ed662, type: 3}

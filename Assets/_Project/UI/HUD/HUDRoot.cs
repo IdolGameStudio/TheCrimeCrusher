@@ -3,7 +3,9 @@ using _Project.GamePlay.Player.PlayerWeapon;
 using _Project.Infrastructure.Factories;
 using _Project.Services.PlayerProgressService;
 using _Project.Services.StaticDataService;
+using _Project.StaticData.Special;
 using _Project.StaticData.Weapon;
+using _Project.UI.HUD.Special;
 using _Project.UI.HUD.Weapons;
 using UnityEngine;
 using Zenject;
@@ -15,7 +17,11 @@ namespace _Project.UI.HUD
         [SerializeField] private WeaponItemController _laserPistol;
         [SerializeField] private WeaponItemController _plasmaRifle;
         [SerializeField] private WeaponItemController _electromagneticHammer;
-        [SerializeField] private GameObject _fireDrone;
+        [SerializeField] private SpecialItemController _fireDrone;
+        [SerializeField] private SpecialItemController _energyShield;
+        [SerializeField] private SpecialItemController _fieryExplosion;
+        [SerializeField] private SpecialItemController _healing;
+        
         
         [SerializeField] private CurrentWeapon _currentWeapon;
         
@@ -36,14 +42,42 @@ namespace _Project.UI.HUD
         
         public void Initialize()
         {
-            if (_playerProgressService.Progress.LaserPistolLevel > 0) AddWeaponOnHUD(WeaponID.LaserPistol);
-            if (_playerProgressService.Progress.PlasmaRifleLevel > 0) AddWeaponOnHUD(WeaponID.PlasmaRifle);
-            if (_playerProgressService.Progress.ElectromagneticHammerLevel > 0) AddWeaponOnHUD(WeaponID.ElectromagneticHammer);
-            if (_playerProgressService.Progress.FireDroneLevel > 0) _fireDrone.SetActive(true);
+            if (_playerProgressService.Progress.LaserPistolLevel > 0) AddWeaponToHUD(WeaponID.LaserPistol);
+            if (_playerProgressService.Progress.PlasmaRifleLevel > 0) AddWeaponToHUD(WeaponID.PlasmaRifle);
+            if (_playerProgressService.Progress.ElectromagneticHammerLevel > 0) AddWeaponToHUD(WeaponID.ElectromagneticHammer);
+            if (_playerProgressService.Progress.FireDroneLevel > 0) AddSpecialToHUD(SpecialID.FireDrone);
+            if (_playerProgressService.Progress.EnergyShieldLevel > 0) AddSpecialToHUD(SpecialID.EnergyShield);
+            if (_playerProgressService.Progress.FieryExplosionLevel > 0) AddSpecialToHUD(SpecialID.FieryExplosion);
+            if (_playerProgressService.Progress.HealingLevel > 0) AddSpecialToHUD(SpecialID.Healing);
             ChangeWeapon(WeaponID.LaserPistol);
         }
 
-        private void AddWeaponOnHUD(WeaponID weaponID)
+        private void AddSpecialToHUD(SpecialID fireDrone)
+        {
+            switch (fireDrone)
+            {
+                case SpecialID.FireDrone:
+                    _fireDrone.gameObject.SetActive(true);
+                    _fireDrone.SetIcon(_staticDataService.GetSpecialData(fireDrone).SpecialIcon);
+                    break;
+                case SpecialID.EnergyShield:
+                    _energyShield.gameObject.SetActive(true);
+                    _energyShield.SetIcon(_staticDataService.GetSpecialData(fireDrone).SpecialIcon);
+                    break;
+                case SpecialID.FieryExplosion:
+                    _fieryExplosion.gameObject.SetActive(true);
+                    _fieryExplosion.SetIcon(_staticDataService.GetSpecialData(fireDrone).SpecialIcon);
+                    break;
+                case SpecialID.Healing:
+                    _healing.gameObject.SetActive(true);
+                    _healing.SetIcon(_staticDataService.GetSpecialData(fireDrone).SpecialIcon);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(fireDrone), fireDrone, null);
+            }
+        }
+
+        private void AddWeaponToHUD(WeaponID weaponID)
         {
             switch (weaponID)
             {
@@ -73,6 +107,10 @@ namespace _Project.UI.HUD
         public class Factory : PlaceholderFactory<HUDRoot>
         {
             
+        }
+
+        public void UseSpecial(SpecialID id)
+        {
         }
     }
 }

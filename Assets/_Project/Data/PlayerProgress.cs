@@ -14,6 +14,10 @@ namespace _Project.Data
         [SerializeField] private int _plasmaRifleLevel;
         [SerializeField] private int _electromagneticHammerLevel;
         [SerializeField] private int _fireDroneLevel;
+        [SerializeField] private int _energyShieldLevel;
+        [SerializeField] private int _fieryExplosionLevel;
+        [SerializeField] private int _healingLevel;
+        
         public PlayerProgress()
         {
             _currentHealth = 100;
@@ -24,6 +28,9 @@ namespace _Project.Data
             _plasmaRifleLevel = 1;
             _electromagneticHammerLevel = 0;
             _fireDroneLevel = 1;
+            _energyShieldLevel = 1;
+            _fieryExplosionLevel = 1;
+            _healingLevel = 1;
         }
 
         public int CurrentHealth => _currentHealth;
@@ -34,7 +41,11 @@ namespace _Project.Data
         public int PlasmaRifleLevel => _plasmaRifleLevel;
         public int ElectromagneticHammerLevel => _electromagneticHammerLevel;
         public int FireDroneLevel => _fireDroneLevel;
-        
-        
+
+        public int EnergyShieldLevel => _energyShieldLevel;
+
+        public int FieryExplosionLevel => _fieryExplosionLevel;
+
+        public int HealingLevel => _healingLevel;
     }
 }

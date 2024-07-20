@@ -5,7 +5,7 @@ namespace _Project.StaticData.Enemy
     [Serializable]
     public enum EnemyType
     {
-        FakeTarget,
-        Slime
+        SimpleHacker,
+        ArmedSimpleHacker
     }
 }

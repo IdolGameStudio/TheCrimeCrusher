@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 8500917934492955796}
   - component: {fileID: 739357896778287339}
   - component: {fileID: -2424712311339218801}
+  - component: {fileID: 5517684618838042817}
   m_Layer: 0
-  m_Name: Character_Augmented_Male_01
+  m_Name: SimpleHacker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +50,7 @@ Animator:
   m_GameObject: {fileID: 1011517095537918}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f13349cc09b03d447a26b54d406aaa8e, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8189eab54f8d7af488274e5f59b2f16b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyDeath: {fileID: -7251172693829460815}
-  _enemyData: {fileID: -200202930037152187}
+  _enemyDataMonoBehavior: {fileID: -200202930037152187}
 --- !u!136 &739357896778287339
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -150,6 +151,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5517684618838042817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011517095537918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b68ca57f83446d852041f6331b3246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyData: {fileID: -200202930037152187}
+  _enemyAnimator: {fileID: 95121194625308984}
 --- !u!1 &1041933892884084
 GameObject:
   m_ObjectHideFlags: 0

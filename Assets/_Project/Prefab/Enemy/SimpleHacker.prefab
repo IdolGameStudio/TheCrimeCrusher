@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 4821835219316264}
   - component: {fileID: 95121194625308984}
   - component: {fileID: -200202930037152187}
-  - component: {fileID: -7251172693829460815}
   - component: {fileID: 8500917934492955796}
   - component: {fileID: 739357896778287339}
   - component: {fileID: -2424712311339218801}
   - component: {fileID: 5517684618838042817}
+  - component: {fileID: 2003189130934641259}
   m_Layer: 0
   m_Name: SimpleHacker
   m_TagString: Untagged
@@ -75,18 +75,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
---- !u!114 &-7251172693829460815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011517095537918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0dbe3401c6419eaa8f2eb074f53e11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8500917934492955796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1f3733e2504c8c852e412141f89205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyDeath: {fileID: -7251172693829460815}
+  _enemySM: {fileID: 5517684618838042817}
   _enemyDataMonoBehavior: {fileID: -200202930037152187}
 --- !u!136 &739357896778287339
 CapsuleCollider:
@@ -165,6 +153,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyData: {fileID: -200202930037152187}
   _enemyAnimator: {fileID: 95121194625308984}
+--- !u!114 &2003189130934641259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011517095537918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cd98c50fd446249236b4aa2949e6c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemySM: {fileID: 5517684618838042817}
 --- !u!1 &1041933892884084
 GameObject:
   m_ObjectHideFlags: 0

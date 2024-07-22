@@ -1,3 +1,4 @@
+using _Project.GamePlay.CharacterSM.EnemyState;
 using _Project.GamePlay.Enemy;
 using _Project.Infrastructure.Factories;
 using UnityEngine;
@@ -18,6 +19,13 @@ namespace _Project.GamePlay.CharacterSM
         private EnemyAttackState _enemyAttackState;
         private EnemyCombatIdleState _enemyCombatIdleState;
         private IGameFactory _gameFactory;
+        private EnemyGetHitState _enemyGetHitState;
+
+        public EnemyDeadState DeadState => _enemyDeadState;
+
+        public EnemyGetHitState GetHitState => _enemyGetHitState;
+
+        public EnemyCombatIdleState CombatIdleState => _enemyCombatIdleState;
 
         [Inject]
         private void Construct(IGameFactory gameFactory)
@@ -30,9 +38,10 @@ namespace _Project.GamePlay.CharacterSM
             _stateMachine = new CharacterStateMachine();
             _enemyIdleState = new EnemyIdleState();
             _enemyRunState = new EnemyRunState();
-            _enemyDeadState = new EnemyDeadState();
+            _enemyDeadState = new EnemyDeadState(_gameFactory, gameObject, _enemyAnimator);
             _enemyAttackState = new EnemyAttackState();
-            _enemyCombatIdleState = new EnemyCombatIdleState();
+            _enemyCombatIdleState = new EnemyCombatIdleState(this, _gameFactory);
+            _enemyGetHitState = new EnemyGetHitState(this, _enemyAnimator);
             _stateMachine.ChangeState(_enemyIdleState);
         }
         

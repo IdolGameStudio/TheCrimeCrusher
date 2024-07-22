@@ -1,12 +1,12 @@
+using _Project.GamePlay.CharacterSM;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _Project.GamePlay.Enemy
 {
     public class EnemyHealth : MonoBehaviour
     {
-        [SerializeField] private EnemyDeath _enemyDeath;
-        [FormerlySerializedAs("_enemyData")] [SerializeField] private EnemyDataMonoBehavior _enemyDataMonoBehavior;
+        [SerializeField] private EnemySM _enemySM;
+        [SerializeField] private EnemyDataMonoBehavior _enemyDataMonoBehavior;
         
         private float _currentHealth;
         private float _maxHealth;
@@ -21,9 +21,9 @@ namespace _Project.GamePlay.Enemy
         {
             _currentHealth -= damage;
             if (_currentHealth <= 0)
-            {
-                _enemyDeath.Death();
-            }
+                _enemySM.ChangeState(_enemySM.DeadState);
+            else
+                _enemySM.ChangeState(_enemySM.GetHitState);
         }
 
         private void ResetHealth() => 

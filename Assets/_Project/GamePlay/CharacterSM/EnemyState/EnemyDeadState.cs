@@ -1,25 +1,47 @@
-namespace _Project.GamePlay.CharacterSM
+using _Project.Infrastructure.Factories;
+using UnityEngine;
+
+namespace _Project.GamePlay.CharacterSM.EnemyState
 {
     public class EnemyDeadState: ICharacterState
     {
+        private readonly IGameFactory _gameFactory;
+        private readonly GameObject _myself;
+        private readonly Animator _animator;
+        private bool _isDead;
+        private static readonly int _dead = Animator.StringToHash("Dead");
+        
+        private float _timeToDestroy = 3f;
+
+        public EnemyDeadState(IGameFactory gameFactory, GameObject myself, Animator animator)
+        {
+            _gameFactory = gameFactory;
+            _myself = myself;
+            _animator = animator;
+        }
         public void Enter()
         {
-            throw new System.NotImplementedException();
+            _isDead = true;
+            _gameFactory.Enemies.Remove(_myself);
+            _animator.SetTrigger(_dead);
         }
 
         public void Execute()
         {
-            throw new System.NotImplementedException();
         }
 
         public void LogicUpdate()
         {
-            throw new System.NotImplementedException();
+            if (!_isDead) return;
+            _timeToDestroy -= Time.deltaTime;
+            if(_timeToDestroy <= 0) 
+                Exit();
+
         }
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
+            GameObject.Destroy(_myself);
         }
     }
 }

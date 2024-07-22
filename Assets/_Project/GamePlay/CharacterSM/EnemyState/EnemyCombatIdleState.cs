@@ -1,25 +1,38 @@
-namespace _Project.GamePlay.CharacterSM
+using _Project.Infrastructure.Factories;
+using UnityEngine;
+
+namespace _Project.GamePlay.CharacterSM.EnemyState
 {
     public class EnemyCombatIdleState: ICharacterState
     {
+        private readonly EnemySM _enemySm;
+        private readonly IGameFactory _gameFactory;
+        
+        private float rotationSpeed = 5f;
+
+        public EnemyCombatIdleState(EnemySM enemySM, IGameFactory gameFactory)
+        {
+            _enemySm = enemySM;
+            _gameFactory = gameFactory;
+        }
         public void Enter()
         {
-            throw new System.NotImplementedException();
         }
 
         public void Execute()
         {
-            throw new System.NotImplementedException();
+            Vector3 targetDirection = _gameFactory.Player.transform.position - _enemySm.transform.position;
+            float step = rotationSpeed * Time.deltaTime;
+            Vector3 newDirection = Vector3.RotateTowards(_enemySm.transform.forward, targetDirection, step, 0.0f);
+            _enemySm.transform.rotation = Quaternion.LookRotation(newDirection, Vector3.up);
         }
 
         public void LogicUpdate()
         {
-            throw new System.NotImplementedException();
         }
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

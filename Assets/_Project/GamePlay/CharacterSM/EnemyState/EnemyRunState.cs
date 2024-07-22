@@ -1,4 +1,4 @@
-namespace _Project.GamePlay.CharacterSM
+namespace _Project.GamePlay.CharacterSM.EnemyState
 {
     public class EnemyRunState: ICharacterState
     {

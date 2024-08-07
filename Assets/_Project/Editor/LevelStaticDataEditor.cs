@@ -1,7 +1,6 @@
 using System.Linq;
-using _Project.GamePlay.Levels;
-using _Project.StaticData.Enemy;
-using _Project.StaticData.Level;
+using _Project.Scripts.GamePlay.Levels;
+using _Project.Scripts.StaticData.Level;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;

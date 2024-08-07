@@ -1,4 +1,4 @@
-using _Project.GamePlay.Levels;
+using _Project.Scripts.GamePlay.Levels;
 using UnityEditor;
 using UnityEngine;
 
